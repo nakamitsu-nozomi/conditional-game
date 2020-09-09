@@ -11,14 +11,31 @@ enemy_attack = 5
 # 敵の防御力
 enemy_defense = 10
 
-# 敵に与えるダメージ計算
-enemy_damege = brave_attack - enemy_defense
-#敵のHPにダメージを与える
+
+
+
+
+
+
+# 攻撃にランダム要素を入れる
+# rand(4)にすると0~3のうちランダムに数字を発生させる
+select_attack = rand(4)
+if select_attack ==0
+  puts "会心の一撃"
+enemy_damege = brave_attack - enemy_defense+rand(20..30)
 enemy_hp = enemy_hp - enemy_damege
+elsif
+    puts "通常攻撃"
+enemy_damege = brave_attack - enemy_defense+rand(3..5)
+enemy_hp = enemy_hp - enemy_damege
+end
+
 
 # 敵に与えるダメージと残りHPの表示
-puts "敵に#{enemy_damege}のダメージを与えた。"
-puts "残りHPは#{enemy_hp}だ。"
+puts <<~TEXT
+敵に#{enemy_damege}のダメージを与えた。
+"残りHPは#{enemy_hp}だ。
+TEXT
 
 #残りHPによってリアクションを変える
 if enemy_hp>20
@@ -34,14 +51,29 @@ elsif enemy_hp >10
 end
 
 
-# 勇者に与えるダメージ計算
-brave_damege = enemy_attack - brave_defense
-#敵のHPにダメージを与える
+
+
+
+# 攻撃にランダム要素を入れる
+# rand(4)にすると0~3のうちランダムに数字を発生させる
+select_attack = rand(4)
+if select_attack ==0
+  puts "会心の一撃"
+brave_damege = enemy_attack - brave_defense+rand(20..30)
 brave_hp = brave_hp - brave_damege
+elsif
+    puts "通常攻撃"
+brave_damege = enemy_attack - brave_defense+rand(3..5)
+brave_hp = brave_hp - brave_damege
+end
+
 
 # 敵に与えるダメージと残りHPの表示
-puts "敵から#{brave_damege}のダメージを受けた。"
-puts "残りHPは#{brave_hp}だ。"
+puts <<~TEXT
+敵から#{brave_damege}のダメージを受けた。
+残りHPは#{brave_hp}だ。
+TEXT
+
 #残りHPによってリアクションを変える
 if brave_hp>20
   puts "勇者は元気だ"
