@@ -1,11 +1,10 @@
 #encoding: utf-8
 
 #  関数
- def destination(destination)
-      puts "#{destination}旅行ですね、何人で行きますか？"  
- end
 
- def  sum(price)
+
+ def  travel(destination,price)
+  puts "#{destination}旅行ですね、何人で行きますか？"  
   pepole=gets.to_i
   if pepole>=5 
        puts "5人以上なので10%割引となります"
@@ -37,14 +36,11 @@ end
 
 
  if plan==1
-        destination("沖縄")
-       sum (10000)
+       travel("沖縄",10000)
  elsif plan==2
-       destination("北海道")
-       sum (20000)
+       travel("北海道",20000)
  elsif plan==3
-       destination("九州")
-       sum (15000)
+       travel("九州",15000)
        
  end       
 
