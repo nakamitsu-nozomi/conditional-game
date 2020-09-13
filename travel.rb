@@ -5,12 +5,12 @@
 
  def  travel(destination,price)
   puts "#{destination}旅行ですね、何人で行きますか？"  
-  pepole=gets.to_i
-  if pepole>=5 
+  people=gets.to_i
+  if people>=5 
        puts "5人以上なので10%割引となります"
-       puts "合計料金:¥#{price * pepole* 90/100}"
+       puts "合計料金:¥#{price * people* 90/100}"
   else
-       puts "合計料金:¥#{price* pepole}"
+       puts "合計料金:¥#{price* people}"
   end     
  end  
 
@@ -23,7 +23,7 @@ puts <<~TEXT
      TEXT
  plan =gets.to_i
 
-while plan >3
+while plan >3 || plan<=0
  puts <<~TEXT
  "1~3入力して下さい"  
 1. 沖縄旅行（¥10,000）
