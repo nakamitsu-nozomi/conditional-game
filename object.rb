@@ -14,22 +14,23 @@ class To_do
   end
  
   def create(task)
-   @tasks << task 
-   puts "タスクID.#{task.id}を追加しました"
+    @tasks << task 
+    puts "タスクID.#{task.id}を追加しました"
   end
 
   
   def index
     puts "-------------"
     puts "<タスク一覧＞"
-    @tasks.each.with_index(1) do |task,i|
+      @tasks.each.with_index(1) do |task,i|
       puts "ID.#{i},タスク名:#{task.name},詳細:#{task.detail}"
     end  
     puts "-------------" 
   end
+
   def delete(task)
-       @tasks.delete(task)
-       puts "タスクID.#{task.id}を削除しました"
+      @tasks.delete(task)
+      puts "タスクID.#{task.id}を削除しました"
   end
 
 
