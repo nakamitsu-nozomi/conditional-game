@@ -22,8 +22,8 @@ class To_do
   def index
     puts "-------------"
     puts "<タスク一覧＞"
-      @tasks.each.with_index(1) do |task,i|
-      puts "ID.#{i},タスク名:#{task.name},詳細:#{task.detail}"
+      @tasks.each do |task,i|
+      puts "ID.#{task.id},タスク名:#{task.name},詳細:#{task.detail}"
     end  
     puts "-------------" 
   end
