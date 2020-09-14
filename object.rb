@@ -2,7 +2,6 @@ class Task
   attr_accessor :id, :name, :detail
   @@count=0
   def initialize(params)
-   
     @id=@@count +=1
     @name = params[:name]
     @detail = params[:detail]
@@ -30,10 +29,10 @@ class Todo
    
   end
 
-  def delete(task)
-    if @tasks.find{|item|item.id==task.id}
-      @tasks.delete(task)
-      puts "タスクID.#{task.id}を削除しました"
+  def delete(id)
+    if @tasks.find{|item|item.id==id}
+      @tasks.delete_if{|item|item.id==id}
+      puts "タスクID.#{id}を削除しました"
     else
       puts "削除項目がありません" 
     end  
@@ -47,8 +46,8 @@ task1=Task.new(name:"起きる",detail:"８時")
 to_do.create(task1)
 task2=Task.new(name:"ねる",detail:"12時")
 to_do.create(task2)
-to_do.delete(task2)
-# to_do.delete(task3)
+to_do.delete(2)
+to_do.delete(3)
 task3=Task.new(name:"ランチ",detail:"13時")
 to_do.create(task3)
 to_do.index
