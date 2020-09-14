@@ -1,14 +1,15 @@
 class Task
   attr_accessor :id, :name, :detail
+  @@count=0
   def initialize(params)
-    @id=params[:id]
+   
+    @id=@@count +=1
     @name = params[:name]
     @detail = params[:detail]
   end
 end
 
-class To_do
-  attr_accessor :id, :name, :detail
+class Todo
   def initialize
     @tasks =[]
   end
@@ -26,25 +27,33 @@ class To_do
       puts "ID.#{task.id},タスク名:#{task.name},詳細:#{task.detail}"
     end  
     puts "-------------" 
+   
   end
 
   def delete(task)
+    if @tasks.find{|item|item.id==task.id}
       @tasks.delete(task)
       puts "タスクID.#{task.id}を削除しました"
+    else
+      puts "削除項目がありません" 
+    end  
   end
 
 
 end
 
-to_do=To_do.new
-task1=Task.new(id:1,name:"起きる",detail:"８時")
+to_do=Todo.new
+task1=Task.new(name:"起きる",detail:"８時")
 to_do.create(task1)
-task2=Task.new(id:2,name:"ねる",detail:"12時")
+task2=Task.new(name:"ねる",detail:"12時")
 to_do.create(task2)
 to_do.delete(task2)
-task3=Task.new(id:3,name:"ランチ",detail:"13時")
+# to_do.delete(task3)
+task3=Task.new(name:"ランチ",detail:"13時")
 to_do.create(task3)
 to_do.index
+
+
 
 
 
